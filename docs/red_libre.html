@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Ciencia de Datos y Visualización</title>
+  <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h2>Visualización de Recursos y Herramientas</h2>
+
+  <div id="mynetwork"></div>
+
+  <script type="text/javascript">
+    // Datos JSON proporcionados
+    const jsonData = { "Coordinación de Ciencia de Datos": {
+      "Cómputo y Procesamiento de Datos": {
+        "Cluster Borromeo": {
+          "Procesamiento": {
+            "cores": 600,
+            "RAM": "4 TB distribuida",
+            "almacenamiento": "228 TBytes"
+          },
+          "Software": {
+            "general": [
+              "R",
+              "Python",
+              "MPI",
+              "OpenMP"
+            ],
+            "bioinformática": [
+              "FastQC",
+              "Trimmomatic",
+              "subread",
+              "Gromacs",
+              "JModelTest",
+              "BLAST",
+              "MAFFT"
+            ]
+          }
+        },
+        "Funes": {
+          "procesamiento": "datos en memoria",
+          "memoria": "2 TB unificada"
+        },
+        "Solid": {
+          "procesamiento": "bases de datos en estado sólido",
+          "almacenamiento": "48 TB en estado sólido"
+        }
+      },
+      "Herramientas de Software y Plataformas": {
+        "Plataformas": [
+          "CHILAM",
+          "EpìPUMA",
+          "EpiSpecies",
+          "MicomWEB",
+          "Surveys"
+        ],
+        "Apps": [
+          "Pumamovil"
+        ],
+        "Bibliotecas": [],
+        "Desarrollos": []
+      },
+      "Datos": {
+        "Salud": [
+          "Proyecto42",
+          "Conductoma",
+          "Metaboloma",
+          "Calmecac",
+          "Neurología",
+          "Atlas de patógenos"
+        ],
+        "Ecología y Medio Ambiente": [
+          "Escenarios de cambio climático",
+          "Especies en México (SNIB)",
+          "Especies en el Mundo (GBIF)",
+          "WorldClim",
+          "Inventario Forestal",
+          "Global Forest Watch",
+          "Cambio de Uso de Suelo (850-2015, proyecciones 2015-2100 SSP)",
+          "Disponibilidad de Agua en Suelo a Nivel de Raíz (1980 - presente)",
+          "Temperatura del Aire (Global de 1850 - presente)",
+          "Distribución de Aves, Mamíferos y Anfibios (BirdLife International, IUCN)"
+        ],
+        "Geográficos": [
+          "Polígonos de países",
+          "Corrientes Oceánicas",
+          "Regiones del IPCC",
+          "México: municipios, agebs y caminos"
+        ],
+        "Sociedad": [
+          "Buzón",
+          "CONEVAL",
+          "INEGI (datos socio-demográficos 2010 y 2020)",
+          "SIAP (producción anual municipal)",
+          "Beneficiarios de Programas Sociales del Gobierno"
+        ],
+        "Genéticos": [
+          "GISAID: SARS-CoV-2, Influenza, otros virus zoonóticos",
+          "Resistencia a antibióticos",
+          "Metaboloma",
+          "GenBank (EUtils)",
+          "Datos curados del Hantavirus del Nuevo Mundo y sus hospederos (roedores)"
+        ]
+      }
+    }
+  };
+
+    let globalNodeIdCounter = 0;
+    const nodesArray = [];
+    const edgesArray = [];
+
+    function createNetworkData(data, parentId = null, level = 0) {
+      for (const key in data) {
+        if (data.hasOwnProperty(key)) {
+          const currentNodeId = globalNodeIdCounter++;
+          const nodeLabel = key;
+          let nodeTitle = "";
+          let nodeGroup = level === 0 ? key : parentId !== null ? nodesArray.find(n => n.id === parentId)?.label : "";
+          let nodeShape = 'box';
+          let nodeColor = 'firebrick';
+
+          if (Array.isArray(data[key])) {
+            nodeTitle = data[key].join(', ');
+            nodeShape = 'ellipse';
+            nodeColor = "royalblue";
+          } else if (typeof data[key] === 'object' && data[key] !== null) {
+            for (const prop in data[key]) {
+              if (data[key].hasOwnProperty(prop)) {
+                nodeTitle += `${prop}: ${JSON.stringify(data[key][prop], null, 2)}\n`;
+              }
+            }
+          } else if (typeof data[key] !== 'object') {
+            nodeTitle = String(data[key]);
+            nodeShape = 'dot';
+            nodeColor = 'coral';
+          }
+
+          nodesArray.push({ id: currentNodeId, label: nodeLabel, title: nodeTitle, group: nodeGroup, shape: nodeShape, color: nodeColor });
+
+          if (parentId !== null) {
+            edgesArray.push({ from: parentId, to: currentNodeId });
+          }
+
+          if (typeof data[key] === 'object' && data[key] !== null && !Array.isArray(data[key])) {
+            createNetworkData(data[key], currentNodeId, level + 1);
+          } else if (Array.isArray(data[key])) {
+            data[key].forEach(item => {
+              const childNodeId = globalNodeIdCounter++;
+              nodesArray.push({ id: childNodeId, label: item, title: item, group: nodeLabel, shape: 'dot', color: 'lightgreen' });
+              edgesArray.push({ from: currentNodeId, to: childNodeId });
+            });
+          }
+        }
+      }
+    }
+
+    createNetworkData(jsonData);
+
+    const nodes = new vis.DataSet(nodesArray);
+    const edges = new vis.DataSet(edgesArray);
+
+    const options = {
+      layout: {
+        hierarchical: false, // Desactivar el diseño jerárquico
+        improvedLayout: true,
+        edgeMinimization: true,
+        randomSeed: 132113
+      },
+      edges: {
+        arrows: {
+          to: { enabled: true, scaleFactor: 0.5 }
+        },
+        smooth: {
+          type: 'cubicBezier',
+          roundness: 0.4
+        }
+      },
+      nodes: {
+        shape: 'box',
+        size:10,
+        font: {
+          size: 12,
+          face: 'arial',
+          color: "cyan",
+        }
+      },
+      groups: {
+        "Cómputo y Procesamiento de Datos": { color: '#C2FABC' },
+        "Herramientas de Software y Plataformas": { color: '#FAD7A0' },
+        "Datos": { color: '#F08080' }
+      },
+      physics: { // Activar la física para que los nodos se dispersen
+        enabled: true,
+        barnesHut: {
+          gravitationalConstant: -2000,
+          centralGravity: 0.2,
+          springLength: 100,
+          springConstant: 0.04,
+          damping: 0.09,
+          avoidOverlap: 1
+        },
+        solver: 'barnesHut',
+        stabilization: {
+          iterations: 150,
+          updateInterval: 100,
+          onlyDynamicEdges: false,
+          fit: true
+        }
+      }
+    };
+
+    const container = document.getElementById('mynetwork');
+    const network = new vis.Network(container, { nodes: nodes, edges: edges }, options);
+  </script>
+
+</body>
+</html>

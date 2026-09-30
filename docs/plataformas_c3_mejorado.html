@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Plataformas del Centro de Ciencias de la Complejidad, C3-UNAM. Exploración y herramientas digitales.">
+  <meta name="theme-color" content="#0f172a">
+  <title>Plataformas - C3</title>
+  
+  <!-- Modern Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="container">
+    <header class="page-header">
+      <h1>Plataformas del C3</h1>
+      <p>
+        Explora las herramientas digitales y laboratorios virtuales desarrollados en el Centro de Ciencias de la Complejidad.
+      </p>
+    </header>
+
+    <section id="plataformas-grid" class="plataformas-grid" aria-label="Lista de plataformas"></section>
+  </main>
+
+  <script>
+    // SVG Icons
+    const linkIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" /></svg>';
+
+    // Constants
+    const MAX_DESC_LENGTH = 120;
+    let plataformasData = []; // Store loaded data globally
+
+    // Render logic
+    const gridContainer = document.getElementById('plataformas-grid');
+
+    const renderGrid = (data) => {
+      plataformasData = data;
+      // Use document fragment for better performance (single DOM update)
+      const fragment = document.createDocumentFragment();
+      
+      data.forEach((item, index) => {
+        const card = document.createElement('article');
+        card.classList.add('card');
+        
+        // Staggered animation using template literal
+        card.style.animation = `fadeInDown 0.6s ease-out ${index * 0.1}s both`;
+
+        const needsExpander = item.descripcion.length > MAX_DESC_LENGTH;
+        const shortDesc = needsExpander ? `${item.descripcion.substring(0, MAX_DESC_LENGTH).trim()}...` : item.descripcion;
+
+        const imgPlaceholder = `<div style="color: var(--text-muted); font-size: 0.9rem;">Sin imagen</div>`;
+        const imgTag = item.imagen_url ? `<img src="${item.imagen_url}" alt="Logo de ${item.nombre}" class="card-img" loading="lazy">` : imgPlaceholder;
+
+        // Cleaned up template string interpolation
+        card.innerHTML = `
+          <div class="card-img-wrapper">
+            ${imgTag}
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">${item.nombre}</h3>
+            <p class="card-desc" id="desc-${index}">${shortDesc}</p>
+            ${needsExpander ? `<button type="button" class="leer-mas-btn" aria-expanded="false" aria-controls="desc-${index}" data-index="${index}">Leer más</button>` : ''}
+          </div>
+          <div class="card-footer">
+            <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="action-link" aria-label="Visitar sitio de ${item.nombre}">
+              Visitar sitio
+              ${linkIcon}
+            </a>
+          </div>
+        `;
+        
+        fragment.appendChild(card);
+      });
+
+      // Clear layout and append new elements
+      gridContainer.innerHTML = '';
+      gridContainer.appendChild(fragment);
+    };
+
+    // Event delegation for expanding descriptions (adds only one event listener instead of multiple)
+    gridContainer.addEventListener('click', (e) => {
+      const btn = e.target.closest('.leer-mas-btn');
+      if (!btn || !plataformasData.length) return;
+
+      const index = parseInt(btn.getAttribute('data-index'), 10);
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      const descEl = document.getElementById(`desc-${index}`);
+      
+      if (!isExpanded) {
+        descEl.textContent = plataformasData[index].descripcion;
+        btn.textContent = 'Leer menos';
+        btn.setAttribute('aria-expanded', 'true');
+        btn.classList.add('expanded');
+      } else {
+        descEl.textContent = `${plataformasData[index].descripcion.substring(0, MAX_DESC_LENGTH).trim()}...`;
+        btn.textContent = 'Leer más';
+        btn.setAttribute('aria-expanded', 'false');
+        btn.classList.remove('expanded');
+      }
+    });
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('plataformas.json')
+        .then(response => response.json())
+        .then(data => renderGrid(data))
+        .catch(error => console.error('Error cargando plataformas.json:', error));
+    });
+  </script>
+</body>
+</html>

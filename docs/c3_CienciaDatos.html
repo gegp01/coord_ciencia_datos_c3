@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Ciencia de Datos</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+      background-color: whitesmoke;
+    }
+    .button-container {
+      margin: 20px 0;
+    }
+    button {
+      padding: 10px 20px;
+      margin-right: 10px;
+      cursor: pointer;
+      background-color:lightsteelblue;
+    }
+    iframe {
+      width: 100%;
+      height: 800px; /* Ajusta la altura según necesites */
+      border: 1px solid transparent;
+    }
+  </style>
+</head>
+<body>
+<div align = "center">
+  <h1>Ciencia de Datos para la Solución de Problemas Nacionales</h1>
+
+    <div align="center" style="width:70vw;">La Ciencia de Datos permite transformar grandes volúmenes de datos en información valiosa para desvelar patrones imposibles de detectar manualmente. Así ayuda en la toma de decisiones informadas para optimizar procesos y acciones de solución a los problemas nacionales. Por ejemplo, la Salud y las Ciencias Ambientales.
+    <br></br>La Coordinación de Ciencia de Datos cuenta con una gran capacidad de recursos humanos y computacionales para contribuir en la coordinación y apoyo a investigaciones enfocadas a la solución de los problemas Nacionales, desde una perspectiva de los Sistemas complejos.</p>
+    </div>
+
+  <div class="button-container">
+    <button onclick="cambiarIframe('recursos_lista.html')">Lista de Recursos</button>
+    <button onclick="cambiarIframe('red_libre.html')">Red de Recursos</button>
+    <button onclick="cambiarIframe('personal_ciencia_de_datos.html')">Personal</button>
+  </div>
+  <iframe id="visorContenido" src="red_libre.html" style="width: 90vw;"></iframe>
+</div>
+  <script>
+    function cambiarIframe(url) {
+      document.getElementById('visorContenido').src = url;
+    }
+  </script>
+
+</body>
+</html>

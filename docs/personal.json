@@ -1,0 +1,66 @@
+[
+  {
+    "nombre": "Dr. Humberto Carrillo Calvet",
+    "descripcion": "Coordinador. Trayectoria.",
+    "intereses": ["Modelado Matemático", "Ciencia de la Ciencia", "Sistemas Complejos", "Inteligencia Artificial", "Aprendizaje Automático", "Redes Neuonales"],
+    "especialidades": ["Redes Neuronales Convolucionales", "Procesamiento del Lenguaje Natural"],
+    "orcid": ["XXXXXXXXX"],
+    "pdfEnlace": "persona1.pdf"
+  },
+  {
+    "nombre": "Mtro. José Luis Gordillo",
+    "descripcion": "Técnico Académico. Unidad de ciencias de los datos y cómputo.  Reseña y expertise.",
+    "intereses": ["Modelado Matemático", "Simulación", "Sistemas Complejos"],
+    "especialidades": ["Computo de Alto rendimiento", "Redes", "Dinámica No Lineal"],
+    "orcid": ["XXXXXXXXX"],
+    "pdfEnlace": "persona2.pdf"
+  },
+  {
+    "nombre": "Mtro. Romel Calero",
+    "descripcion": "Técnico Académico. Unidad de ciencias de los datos y cómputo. Reseña y expertise.",
+    "intereses": ["Ciencia de Datos", "Análisis Estadístico", "Visualización de Datos"],
+    "especialidades": ["Regresión", "Clasificación", "Herramientas de Visualización"],
+    "orcid": ["XXXXXXXXX"],
+    "pdfEnlace": "persona3.pdf"
+  },
+  {
+    "nombre": "Dr. Ricardo Arencibia",
+    "descripcion": "Breve descripción y área de expertise.",
+    "intereses": ["Ciencia de la Ciencia"],
+    "especialidades": ["Análisis Matemático"],
+    "orcid": ["XXXXXXXXX"],
+    "pdfEnlace": "persona4.pdf"
+  },
+  {
+    "nombre": "Dr. Santiago Herce",
+    "descripcion": "Investigador. Breve descripción y área de expertise.",
+    "intereses": ["Neurobiolgía computacional"],
+    "especialidades": ["expertise"],
+    "orcid": ["XXXXXXXXX"],
+    "pdfEnlace": "persona5.pdf"
+  },
+  {
+    "nombre": "Dr. José Luis Jiménez",
+    "descripcion": "Investigador. Breve descripción y área de expertise.",
+    "intereses": ["Self Organizing Maps", "Cómputo", "Large Language Models"],
+    "especialidades": ["Computo"],
+    "orcid": ["XXXXXXXXX"],
+    "pdfEnlace": "persona5.pdf"
+  },
+  {
+    "nombre": "Dr. Gabriel E García Peña",
+    "descripcion": "Técnico Académico. Apoyo a la Investigación. Breve descripción y área de expertise.",
+    "intereses": ["Bioinformática", "Genómica", "Biología de Sistemas", "Agentes Evolutivos", "Redes Biológicas"],
+    "especialidades": ["Ecología y Evolución", "Sistemas Complejos", "Ecología de Virus Zoonóticos", "Migración y Ecología de Aves", "Biología de la Conducta", "Metacomunidades"],
+    "orcid": ["XXXXXXXXX"],
+    "pdfEnlace": "persona6.pdf"
+  },
+  {
+    "nombre": "Mtro. Marco Rosas",
+    "descripcion": "Técnico Académico. Apoyo a la Investigación. Breve descripción y área de expertise.",
+    "intereses": ["Ecosistemas Complejos, Socio-Ecosistemas"],
+    "especialidades": ["Movilidad"],
+    "orcid": ["XXXXXXXXX"],
+    "pdfEnlace": "persona6.pdf"
+  }
+]

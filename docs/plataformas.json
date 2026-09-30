@@ -1,0 +1,68 @@
+[
+  {
+    "nombre": "Chilam",
+    "descripcion": "El objetivo del laboratorio Chilam es recopilar e integrar grandes conjuntos datos de diversas fuentes que abarquen muchas disciplinas. Así como la construcción de laboratorios virtuales que permitan analizar este gran conjunto de datos, simular sistemas complejos adaptativos, y diseñar experimentos virtuales para probar hipótesis. Estos análisis permitirán apoyar en la solución de problemas globales en salud, bienestar social y sustentabilidad.",
+    "url": "https://chilam.c3.unam.mx/",
+    "imagen_url": "logos_plataformas/chilam.png"
+  },
+  {
+    "nombre": "Conductome",
+    "descripcion": "Proyecto de investigación que identifica y analiza las relaciones causales entre factores que influyen en la conducta humana vinculada a la obesidad con el objetivo de construir un modelo mental, que abarca conceptos como creencias, percepción de sí mismo y del mundo.",
+    "url": "https://chilam.c3.unam.mx/proyectos/conductome",
+    "imagen_url": "logos_plataformas/conductome.svg"
+  },
+  {
+    "nombre": "Dyana",
+    "descripcion": "DyAna es un laboratorio virtual que permite analizar bases de datos complejas de forma intuitiva y segura. Su principal ventaja es que facilita la generación de conocimiento sin requerir conocimientos de programación, integrando información de diversos sectores para el estudio de sistemas biológicos y sociales.",
+    "url": "https://dyana.c3.unam.mx",
+    "imagen_url": "logos_plataformas/logo_dyana_lb.svg"
+  },
+  {
+    "nombre": "EpI-PUMA",
+    "descripcion": "En síntesis, un usuario podrá crear rápidamente su propio modelo predictivo centrado en una predicción vinculada a una decisión en un ambiente amigable donde no se requiere conocimientos especializados, ni de modelación ni de aprendizaje de máquinas.",
+    "url": "https://chilam.c3.unam.mx/proy-epipuma/acerca-de-epipuma",
+    "imagen_url": "logos_plataformas/epipuma.svg"
+  },
+  {
+    "nombre": "EPI-SPECIES",
+    "descripcion": "Determinar y caracterizar el paisaje epidemiológico donde se desarrolla una zoonosis, es el primer paso para entender su complejidad. Este conocimiento es fundamental para la predicción de futuros riesgos, ya que nos permite crear escenarios.",
+    "url": "https://chilam.c3.unam.mx/proyectos/epi-species",
+    "imagen_url": "logos_plataformas/epispecies.svg"
+  },
+  {
+    "nombre": "LabSOM",
+    "descripcion": "LabSOM es una herramienta de uso libre para el análisis exploratorio de datos con la red neuronal SOM (Redes de Kohonen). Entre sus funcionalidades está la visualización de mapas de componentes, UMatrix y mapa de Clustering. La herramienta fue desarrollada en el Laboratorio de Dinámica no Lineal de la Facultad de Ciencias de la UNAM.",
+    "url": "https://zenodo.org/records/3630581",
+    "imagen_url": "logos_plataformas/labSOM.png"
+  },    
+  {
+    "nombre": "Micom-Web",
+    "descripcion": "Interfaz web fácil de usar para utilizar MICOM sin necesidad de escribir una sola línea de código en Python. En MICOMWeb puedes subir tus datos experimentales para construir redes metabólicas utilizando diferentes bases de datos y simular los flujos metabólicos de tu comunidad de acuerdo con una dieta determinada. MICOMWeb realizará todo el proceso y te enviará un correo electrónico una vez que se hayan completado todos los cálculos.",
+    "url": "https://micomweb.c3.unam.mx/",
+    "imagen_url": "logos_plataformas/MICOM.png"
+  },
+  {
+    "nombre": "Observatorio de Vacunas",
+    "descripcion": "Sistema de información para el control de la pandemia de COVID-19 mediante la promoción de la vacunación en la población de México.",
+    "url": "https://observatoriovacunascovid19.unam.mx/",
+    "imagen_url": "logos_plataformas/observatoriodevacunas.png"
+  },
+  {
+    "nombre": "PathSOM",
+    "descripcion": "PathSOM es una herramienta basada en redes neuronales autoorganizadas (Self-Organizing Maps, SOM) para visualizar la evolución de datos multidimensionales (trayectorias) en el plano. La herramienta fue desarrollada en el Laboratorio de Dinámica no Lineal de la Facultad de Ciencias de la UNAM.",
+    "url": "https://zenodo.org/records/15058998",
+    "imagen_url": "logos_plataformas/PathSOM_horiz_white.png"
+  },    
+  {
+    "nombre": "Proyecto 42",
+    "descripcion": "Es un Proyecto de investigación que nació de la necesidad de conocer más a fondo las causas del Síndrome Metabólico (hipertensión, dislipidemia, diabetes/prediabetes, obesidad) y el sobrepeso en México.",
+    "url": "https://chilam.c3.unam.mx/proyectos/proyecto-42",
+    "imagen_url": "logos_plataformas/proyecto42.svg"
+  },
+  {
+    "nombre": "SPECIES",
+    "descripcion": "Herramienta desarrollada por C3-UNAM y CONABIO que analiza nichos ecológicos, distribuciones potenciales e interacciones entre especies. Usa minería de datos espaciales con registros biológicos y variables ambientales para apoyar la investigación y conservación de la biodiversidad, facilitando un enfoque integral y accesible.",
+    "url": "https://chilam.c3.unam.mx/proy-species/acerca-de-species",
+    "imagen_url": "logos_plataformas/species.svg"
+  }
+]

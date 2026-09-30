@@ -1,0 +1,18 @@
+## Coordinación de Ciencia de Datos e Inteligencia Artificial
+Esta posición será designada y removida libremente por la persona Coordinadora General del C3. La persona Coordinadora de Ciencia de Datos e Inteligencia Artificial será responsable de promover y coordinar las actividades relacionadas con la gestión, análisis, integración y aprovechamiento de datos, así como del desarrollo y aplicación de metodologías computacionales avanzadas para la investigación interdisciplinaria en Ciencias de la Complejidad.
+### Objetivos
+    • Promover el uso estratégico de los datos, la inteligencia artificial, la modelación computacional y las tecnologías avanzadas de información como herramientas transversales para la investigación, la docencia, la vinculación y la solución de problemas complejos.
+    • Desarrollar capacidades institucionales para la adquisición, almacenamiento, integración, análisis y visualización de grandes volúmenes de datos, así como para la construcción de plataformas y herramientas computacionales que fortalezcan las actividades académicas del C3.
+### Funciones
+    • Diseñar y promover estrategias institucionales para el uso de ciencia de datos, inteligencia artificial y métodos computacionales avanzados en los proyectos del C3.
+    • Impulsar la integración, interoperabilidad y aprovechamiento de datos provenientes de distintas disciplinas y fuentes de información.
+    • Proponer políticas, estándares y buenas prácticas para la gestión, almacenamiento, documentación, preservación y acceso a datos de investigación.
+    • Coordinar el desarrollo de plataformas, repositorios, herramientas analíticas y recursos computacionales que apoyen las actividades académicas del C3.
+    • Promover el uso de tecnologías emergentes en ciencia de datos, inteligencia artificial, aprendizaje automático, simulación computacional y análisis de sistemas complejos.
+    • Colaborar con la Coordinación de Investigación en el diseño y desarrollo de proyectos que requieran capacidades avanzadas de análisis de datos o cómputo científico.
+    • Colaborar con la Coordinación de Docencia en la formación de recursos humanos especializados en ciencia de datos, inteligencia artificial y sistemas complejos.
+    • Colaborar con la Coordinación de Vinculación en proyectos de transferencia tecnológica y aplicación del conocimiento basados en datos y tecnologías digitales.
+    • Coordinar sus actividades con el Laboratorio Nacional de Ciencias de la Complejidad para el aprovechamiento de la infraestructura computacional especializada.
+    • Identificar oportunidades de financiamiento relacionadas con infraestructura digital, inteligencia artificial, ciencia de datos y cómputo avanzado.
+    • Promover la adopción de principios de ciencia abierta, reproducibilidad, transparencia y uso responsable de datos e inteligencia artificial.
+    • Realizar investigación original en Ciencias de la Complejidad, Ciencia de Datos e Inteligencia Artificial.

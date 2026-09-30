@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Académicos - Ciencia de Datos</title>
+  
+  <!-- Modern Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="container">
+    <header class="page-header">
+      <h1>Académicos</h1>
+      <p>Personal de la Coordinación de Ciencia de Datos e Inteligencia Artificial</p>
+    </header>
+
+    <section id="autores-container" class="plataformas-grid" aria-label="Lista de académicos"></section>
+  </main>
+
+  <script>
+    const linkIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" /></svg>';
+
+    const autoresContainer = document.getElementById('autores-container');
+
+    const renderGrid = (autores) => {
+      const fragment = document.createDocumentFragment();
+      
+      autores.forEach((autor, index) => {
+        const card = document.createElement('article');
+        card.classList.add('card');
+        card.style.animation = `fadeInDown 0.6s ease-out ${index * 0.1}s both`;
+
+        card.innerHTML = `
+          <div class="card-content">
+            <h3 class="card-title">${autor.nombre}</h3>
+            <div class="card-desc">
+                <p><strong>${autor.descripcion}</strong></p><br>
+                <p><strong>Intereses de Investigación:</strong> ${autor.intereses.join(', ')}</p><br>
+                <p><strong>Especialidades:</strong> ${autor.especialidades.join(', ')}</p><br>
+                <p><strong>ORCID:</strong> ${autor.orcid.join(', ')}</p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="${autor.pdfEnlace}" target="_blank" rel="noopener noreferrer" class="action-link" aria-label="Ver currículum de ${autor.nombre}">
+              Ver Currículum
+              ${linkIcon}
+            </a>
+          </div>
+        `;
+        
+        fragment.appendChild(card);
+      });
+
+      autoresContainer.innerHTML = '';
+      autoresContainer.appendChild(fragment);
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('personal.json')
+        .then(response => response.json())
+        .then(data => renderGrid(data))
+        .catch(error => console.error('Error cargando personal.json:', error));
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Plataformas</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+      background-color: #555;
+      color: #333;
+      margin-top: 90px;
+    }
+    #autores-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      width: 80%;
+      margin: 0 auto; 
+    }
+    .autor-card {
+      border: 1px solid cyan;
+      padding: 15px;
+      background-color: black;
+      color: whitesmoke;
+      border-radius: 8px;
+      flex-basis: calc(33.33% - 20px);
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+      max-width: 300px;
+    }
+    .autor-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .autor-nombre {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: azure;
+    }
+    .autor-puesto {
+      font-size: 1em;
+      font-style: italic;
+      color: azure;
+      margin-bottom: 8px;
+    }
+    .autor-descripcion {
+      margin-bottom: 10px;
+    }
+    .leer-mas {
+      color: cyan;
+      cursor: pointer;
+      text-decoration: underline;
+      display: inline-block;
+      margin-top: 5px;
+    }
+    .autor-intereses,
+    .autor-especialidades,
+    .autor-orcid {
+      margin-bottom: 10px;
+    }
+    .autor-orcid a {
+      color: lightgreen;
+      text-decoration: none;
+    }
+    .autor-orcid a:hover {
+      text-decoration: underline;
+    }
+    .autor-enlace {
+      display: block;
+      margin-top: 10px;
+      color: lightgreen;
+      text-decoration: none;
+    }
+    .autor-enlace:hover {
+      text-decoration: underline;
+    }
+    .autor-enlace::before {
+      content: "🌐 ";
+    }
+    .autor-orcid a::before {
+      content: "🔗 ";
+    }
+    .autor-imagen {
+      width: 100%;
+      max-height: 120px;
+      object-fit: contain;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      background-color: rgb(0, 0, 0);
+    }
+    @media (max-width: 900px) {
+      .autor-card {
+        flex-basis: calc(50% - 20px);
+      }
+    }
+    @media (max-width: 600px) {
+      .autor-card {
+        flex-basis: 100%;
+      }
+    }
+    h1, h2 {
+      text-align: center;
+      color: aliceblue;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Plataformas del Centro de Ciencias de la Complejidad</h1>
+
+<div id="autores-container"></div>
+
+<script>
+  const autores = [
+    {
+      nombre: "Chilam",
+      puesto: "",
+      descripcion: "El objetivo del laboratorio Chilam es recopilar e integrar grandes conjuntos datos de diversas fuentes que abarquen muchas disciplinas. Así como la construcción de laboratorios virtuales que permitan analizar este gran conjunto de datos, simular sistemas complejos adaptativos, y diseñar experimentos virtuales para probar hipótesis. Estos análisis permitirán apoyar en la solución de problemas globales en salud, bienestar social y sustentabilidad.",
+      intereses: [],
+      especialidades: [],
+      orcid: [],
+      pdfEnlace: "https://chilam.c3.unam.mx/",
+      imagen_url: "logos_plataformas/chilam.png"
+    },
+    {
+      nombre: "Conductome",
+      puesto: "",
+      descripcion: "Proyecto de investigación que identifica y analiza las relaciones causales entre factores que influyen en la conducta humana vinculada a la obesidad con el objetivo de construir un modelo mental, que abarca conceptos como creencias, percepción de sí mismo y del mundo.",
+      intereses: [],
+      especialidades: [],
+      orcid: [],
+      pdfEnlace: "https://chilam.c3.unam.mx/proyectos/conductome",
+      imagen_url: "logos_plataformas/conductome.svg"
+    },
+    {
+      nombre: "Dyana",
+      puesto: "",
+      descripcion: "DyAna es un laboratorio virtual que permite analizar bases de datos complejas de forma intuitiva y segura. Su principal ventaja es que facilita la generación de conocimiento sin requerir conocimientos de programación, integrando información de diversos sectores para el estudio de sistemas biológicos y sociales.",
+      intereses: ["Sistemas Complejos", "Análisis de Datos Masivos", "Investigación en Salud y Ambiente", "Generación de Hipótesis", "Sistemas Biológicos y Sociales"],
+      especialidades: ["Machine Learning", "Visualización Dinámica de Datos", "Análisis de Correlación Canónica", "Seguridad de Información Sensible"],      
+      orcid: [""],
+      pdfEnlace: "https://dyana.c3.unam.mx",
+      imagen_url: "logos_plataformas/logo_dyana_lb.svg"
+    },
+    {
+      nombre: "EpI-PUMA",
+      puesto: "",
+      descripcion: "En síntesis, un usuario podrá crear rápidamente su propio modelo predictivo centrado en una predicción vinculada a una decisión en un ambiente amigable donde no se requiere conocimientos especializados, ni de modelación ni de aprendizaje de máquinas.",
+      intereses: ["Teoría de la Información", "Modelado Computacional", "Neurociencia Cognitiva", "Aprendizaje Humano", "Toma de Decisiones"],
+      especialidades: ["Neurociencia Computacional", "Generalización", "Ciencia de Datos", "Inteligencia Artificial"],
+      orcid: [""],
+      pdfEnlace: "https://chilam.c3.unam.mx/proy-epipuma/acerca-de-epipuma",
+      imagen_url: "logos_plataformas/epipuma.svg"
+    },
+    {
+      nombre: "EPI-SPECIES",
+      puesto: "",
+      descripcion: "Determinar y caracterizar el paisaje epidemiológico donde se desarrolla una zoonosis, es el primer paso para entender su complejidad. Este conocimiento es fundamental para la predicción de futuros riesgos, ya que nos permite crear escenarios.",
+      intereses: [],
+      especialidades: [],
+      orcid: [],
+      pdfEnlace: "https://chilam.c3.unam.mx/proyectos/epi-species",
+      imagen_url: "logos_plataformas/epispecies.svg"
+    },
+    {
+      nombre: "LabSOM",
+      puesto: "",
+      descripcion: "LabSOM es una herramienta de uso libre para el análisis exploratorio de datos con la red neuronal SOM (Redes de Kohonen). Entre sus funcionalidades está la visualización de mapas de componentes, UMatrix y mapa de Clustering. La herramienta fué desarrollada en el Laboratorio de Dinámica no Lineal de la Facultad de Ciencias de la UNAM.",
+      intereses: [],
+      especialidades: [],
+      orcid: [],
+      pdfEnlace: "https://zenodo.org/records/3630581",
+      imagen_url: "logos_plataformas/labSOM.png"
+    },    
+    {
+      nombre: "Micom-Web",
+      puesto: "",
+      descripcion: "Interfaz web fácil de usar para utilizar MICOM sin necesidad de escribir una sola línea de código en Python. En MICOMWeb puedes subir tus datos experimentales para construir redes metabólicas utilizando diferentes bases de datos y simular los flujos metabólicos de tu comunidad de acuerdo con una dieta determinada. MICOMWeb realizará todo el proceso y te enviará un correo electrónico una vez que se hayan completado todos los cálculos.",
+      intereses: [],
+      especialidades: [],
+      orcid: [],
+      pdfEnlace: "https://micomweb.c3.unam.mx/",
+      imagen_url: "logos_plataformas/MICOM.png"
+    },
+    {
+      nombre: "Observatorio de Vacunas",
+      puesto: "",
+      descripcion: "Sistema de información para el control de la pandemia de COVID-19 mediante la promoción de la vacunación en la población de México.",
+      intereses: [],
+      especialidades: [],
+      orcid: [],
+      pdfEnlace: "https://observatoriovacunascovid19.unam.mx/",
+      imagen_url: "logos_plataformas/observatoriodevacunas.png"
+    },
+    {
+      nombre: "PathSOM",
+      puesto: "",
+      descripcion: "PathSOM es una herramienta basada en redes neuronales autoorganizadas (Self-Organizing Maps, SOM) para visualizar la evolución de datos multidimensionales (trayectorias) en el plano. La herramienta fué desarrollada en el Laboratorio de Dinámica no Lineal de la Facultad de Ciencias de la UNAM.",
+      intereses: [],
+      especialidades: [],
+      orcid: [],
+      pdfEnlace: "https://zenodo.org/records/15058998",
+      imagen_url: "logos_plataformas/PathSOM_horiz_white.png"
+    },    
+    {
+      nombre: "Proyecto 42",
+      puesto: "",
+      descripcion: "Es un Proyecto de investigación que nació de la necesidad de conocer más a fondo las causas del Síndrome Metabólico (hipertensión, dislipidemia, diabetes/prediabetes, obesidad) y el sobrepeso en México.",
+      intereses: [],
+      especialidades: [],
+      orcid: [],
+      pdfEnlace: "https://chilam.c3.unam.mx/proyectos/proyecto-42",
+      imagen_url: "logos_plataformas/proyecto42.svg"
+    },
+    {
+      nombre: "SPECIES",
+      puesto: "",
+      descripcion: "Herramienta desarrollada por C3-UNAM y CONABIO que analiza nichos ecológicos, distribuciones potenciales e interacciones entre especies. Usa minería de datos espaciales con registros biológicos y variables ambientales para apoyar la investigación y conservación de la biodiversidad, facilitando un enfoque integral y accesible.",
+      intereses: [],
+      especialidades: [],
+      orcid: [],
+      pdfEnlace: "https://chilam.c3.unam.mx/proy-species/acerca-de-species",
+      imagen_url: "logos_plataformas/species.svg"
+    }
+  ];
+
+  const autoresContainer = document.getElementById('autores-container');
+
+  autores.forEach(autor => {
+    const autorCard = document.createElement('div');
+    autorCard.classList.add('autor-card');
+
+    if (autor.imagen_url) {
+      const img = document.createElement('img');
+      img.src = autor.imagen_url;
+      img.alt = `Logo de ${autor.nombre}`;
+      img.classList.add('autor-imagen');
+      autorCard.appendChild(img);
+    }
+
+    const nombreElement = document.createElement('div');
+    nombreElement.classList.add('autor-nombre');
+    nombreElement.textContent = autor.nombre;
+
+    const descripcionElement = document.createElement('p');
+    descripcionElement.classList.add('autor-descripcion');
+
+    const maxLength = 100;
+    let fullText = autor.descripcion;
+    let shortText = fullText;
+
+    if(fullText.length > maxLength) {
+      shortText = fullText.substring(0, maxLength) + "...";
+    }
+
+    descripcionElement.textContent = shortText;
+
+    const leerMasBtn = document.createElement('span');
+    leerMasBtn.classList.add('leer-mas');
+    leerMasBtn.textContent = fullText.length > maxLength ? "Leer más" : "";
+    let isExpanded = false;
+
+    leerMasBtn.addEventListener('click', () => {
+      isExpanded = !isExpanded;
+      descripcionElement.textContent = isExpanded ? fullText : shortText;
+      leerMasBtn.textContent = isExpanded ? "Leer menos" : "Leer más";
+    });
+
+    const enlaceElement = document.createElement('a');
+    enlaceElement.classList.add('autor-enlace');
+    enlaceElement.href = autor.pdfEnlace;
+    enlaceElement.innerHTML = `Acceso a ${autor.nombre}`;
+    enlaceElement.target = "_blank";
+    enlaceElement.rel = "noopener noreferrer";
+
+    //autorCard.appendChild(nombreElement);
+    autorCard.appendChild(descripcionElement);
+    if (leerMasBtn.textContent) autorCard.appendChild(leerMasBtn);
+    autorCard.appendChild(enlaceElement);
+
+    autoresContainer.appendChild(autorCard);
+  });
+</script>
+
+</body>
+</html>

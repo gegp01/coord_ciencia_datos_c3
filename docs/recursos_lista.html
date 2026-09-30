@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Estructura de Datos</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+    }
+    .level-1 {
+      margin-left: 0px;
+      font-weight: bold;
+    }
+    .level-2 {
+      margin-left: 20px;
+      font-style: italic;
+    }
+    .level-3 {
+      margin-left: 40px;
+    }
+    .level-4 {
+      margin-left: 60px;
+    }
+    .level-5 {
+      margin-left: 80px;
+    }
+  </style>
+</head>
+<body>
+
+  <h3>Lista de Recursos</h3>
+
+  <div id="data-container"></div>
+
+  <script>
+    const jsonData = {
+      "Coordinación de Ciencia de Datos": {
+        "Cómputo y Procesamiento de Datos": {
+          "Cluster Borromeo": {
+            "Procesamiento": {
+              "cores": 600,
+              "RAM": "4 TB distribuida",
+              "almacenamiento": "228 TBytes"
+            },
+            "Software General": {
+                "R":"R",
+                "Python":"Python",
+                "MPI":"MPI",
+                "OpenMP":"OpenMP"
+            },
+              "Software de Bioinformática": {
+                "FastQC":"FastQC",
+                "Trimmomatic":"Trimmomatic",
+                "subread":"subread",
+                "Gromacs":"Gromacs",
+                "JModelTest":"JModelTest",
+                "BLAST":"BLAST",
+                "MAFFT":"MAFFT"
+            }
+            }
+          },
+          "Funes": {
+            "procesamiento": "datos en memoria",
+            "memoria": "2 TB unificada"
+          },
+          "Solid": {
+            "procesamiento": "bases de datos en estado sólido",
+            "almacenamiento": "48 TB en estado sólido"
+          }
+        },
+        "Herramientas de Software y Plataformas": {
+          "Plataformas": [
+            "CHILAM",
+            "EpìPUMA",
+            "EpiSpecies",
+            "MicomWEB",
+            "Surveys"
+          ],
+          "Apps": [
+            "Pumamovil"
+          ],
+          "Bibliotecas": [],
+          "Desarrollos": []
+        },
+        "Datos": {
+          "Salud": [
+            "Proyecto42",
+            "Conductoma",
+            "Metaboloma",
+            "Calmecac",
+            "Neurología",
+            "Atlas de patógenos"
+          ],
+          "Ecología y Medio Ambiente": [
+            "Escenarios de cambio climático",
+            "Especies en México (SNIB)",
+            "Especies en el Mundo (GBIF)",
+            "WorldClim",
+            "Inventario Forestal",
+            "Global Forest Watch",
+            "Cambio de Uso de Suelo (850-2015, proyecciones 2015-2100 SSP)",
+            "Disponibilidad de Agua en Suelo a Nivel de Raíz (1980 - presente)",
+            "Temperatura del Aire (Global de 1850 - presente)",
+            "Distribución de Aves, Mamíferos y Anfibios (BirdLife International, IUCN)"
+          ],
+          "Geográficos": [
+            "Polígonos de países",
+            "Corrientes Oceánicas",
+            "Regiones del IPCC",
+            "México: municipios, agebs y caminos"
+          ],
+          "Sociedad": [
+            "Buzón",
+            "CONEVAL",
+            "INEGI (datos socio-demográficos 2010 y 2020)",
+            "SIAP (producción anual municipal)",
+            "Beneficiarios de Programas Sociales del Gobierno"
+          ],
+          "Genéticos": [
+            "GISAID: SARS-CoV-2, Influenza, otros virus zoonóticos",
+            "Resistencia a antibióticos",
+            "Metaboloma",
+            "GenBank (EUtils)",
+            "Datos curados del Hantavirus del Nuevo Mundo y sus hospederos (roedores)"
+          ]
+        }
+      };
+
+    const dataContainer = document.getElementById('data-container');
+
+    function displayData(data, level = 1) {
+      for (const key in data) {
+        if (data.hasOwnProperty(key)) {
+          const item = data[key];
+          const listItem = document.createElement('div');
+          listItem.className = `level-${level}`;
+          listItem.textContent = key + (typeof item !== 'object' && !Array.isArray(item) ? `: ${item}` : '');
+          dataContainer.appendChild(listItem);
+
+          if (typeof item === 'object' && item !== null) {
+            if (key === "Software") {
+              // Iterar sobre las propiedades de Software como si fueran elementos
+              for (const softwareKey in item) {
+                if (item.hasOwnProperty(softwareKey) && Array.isArray(item[softwareKey])) {
+                  const softwareKeyItem = document.createElement('div');
+                  softwareKeyItem.className = `level-${level + 1}`;
+                  softwareKeyItem.textContent = softwareKey;
+                  dataContainer.appendChild(softwareKeyItem);
+                  item[softwareKey].forEach(softwareItem => {
+                    const softwareListItem = document.createElement('div');
+                    softwareListItem.className = `level-${level + 2}`;
+                    softwareListItem.textContent = `- ${softwareItem}`;
+                    dataContainer.appendChild(softwareListItem);
+                  });
+                }
+              }
+            } else if (Array.isArray(item)) {
+              item.forEach(arrayItem => {
+                const arrayListItem = document.createElement('div');
+                arrayListItem.className = `level-${level + 1}`;
+                arrayListItem.textContent = `- ${arrayItem}`;
+                dataContainer.appendChild(arrayListItem);
+              });
+            } else {
+              displayData(item, level + 1);
+            }
+          }
+        }
+      }
+    }
+
+    displayData(jsonData);
+  </script>
+
+</body>
+</html>
